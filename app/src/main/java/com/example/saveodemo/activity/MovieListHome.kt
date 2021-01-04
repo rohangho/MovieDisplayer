@@ -3,8 +3,11 @@ package com.example.saveodemo.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.example.saveodemo.R
+import com.example.saveodemo.adapter.MyDisplayAdapter
 import com.example.saveodemo.adapter.SlidingImage_Adapter
 import com.example.saveodemo.model.BaseResponse
 import com.example.saveodemo.viewModel.MainViewModel
@@ -14,14 +17,23 @@ class MovieListHome : AppCompatActivity() {
 
     private var homeViewModel: MainViewModel? = null
     private lateinit var displayViewPager: ViewPager
+    private lateinit var displayRecyclerView: RecyclerView
+    private lateinit var myDisplayAdapter: MyDisplayAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_list_home)
-
+        displayRecyclerView = findViewById(R.id.playingMovieList)
         displayViewPager = findViewById(R.id.hori_slider)
+        displayRecyclerView.layoutManager = GridLayoutManager(this, 3)
+        displayRecyclerView.isNestedScrollingEnabled = false
+        myDisplayAdapter = MyDisplayAdapter(this)
+        displayRecyclerView.adapter = myDisplayAdapter
         homeViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         homeViewModel!!.init()
+        homeViewModel!!.getAllPlayingMovies().observe(this, {
+            myDisplayAdapter.submitList(it)
+        })
         homeViewModel!!.getFeaturedList().observe(this, this::updateUi)
 
     }

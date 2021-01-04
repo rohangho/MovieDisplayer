@@ -10,4 +10,10 @@ interface NetworkCall {
     @GET("upcoming")
     fun getUpcomingMovie(@Query("api_key") key: String): Call<BaseResponse>
 
+    @GET("now_playing")
+    fun getPlayingMovie(
+        @Query("api_key") key: String,
+        @Query("page") pageNo: Int
+    ): Call<BaseResponse>
+
 }
