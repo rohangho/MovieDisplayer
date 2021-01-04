@@ -56,7 +56,8 @@ public class MyDisplayAdapter extends PagedListAdapter<Result, MyDisplayAdapter.
         circularProgressDrawable.setCenterRadius(30f);
         circularProgressDrawable.start();
         holder.movieName.setText(getItem(position).getTitle());
-        Glide.with(context).load("http://image.tmdb.org/t/p/original" + getItem(position).getPosterPath()).placeholder(circularProgressDrawable).into(holder.imageView);
+        if (getItem(position).getPosterPath() != null)
+            Glide.with(context).load("http://image.tmdb.org/t/p/original" + getItem(position).getPosterPath()).placeholder(circularProgressDrawable).into(holder.imageView);
     }
 
 
