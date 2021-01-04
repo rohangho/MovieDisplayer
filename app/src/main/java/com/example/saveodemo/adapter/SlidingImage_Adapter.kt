@@ -13,7 +13,7 @@ import com.example.saveodemo.R
 import java.util.*
 
 class SlidingImage_Adapter(private val context: Context, private val IMAGES: ArrayList<String>) :
-    PagerAdapter() {
+        PagerAdapter() {
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
@@ -35,13 +35,13 @@ class SlidingImage_Adapter(private val context: Context, private val IMAGES: Arr
     override fun instantiateItem(view: ViewGroup, position: Int): Any {
         val imageLayout = inflater.inflate(R.layout.inside_horizontal_slider, view, false)!!
         val imageView = imageLayout
-            .findViewById<View>(R.id.image) as ImageView
+                .findViewById<View>(R.id.image) as ImageView
         val circularProgressDrawable = CircularProgressDrawable(context)
         circularProgressDrawable.strokeWidth = 5f
         circularProgressDrawable.centerRadius = 30f
         circularProgressDrawable.start()
         Glide.with(context).load(IMAGES[position]).placeholder(circularProgressDrawable)
-            .into(imageView)
+                .into(imageView)
         view.addView(imageLayout, 0)
         return imageLayout
     }

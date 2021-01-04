@@ -28,7 +28,8 @@ class MovieListHome : AppCompatActivity() {
         displayRecyclerView = findViewById(R.id.playingMovieList)
         displayViewPager = findViewById(R.id.hori_slider)
         displayViewPager.clipToPadding = false
-        displayViewPager.setPadding(80, 0, 80, 0)
+        displayViewPager.offscreenPageLimit = 3
+        displayViewPager.setPadding(100, 0, 100, 0)
         displayViewPager.pageMargin = 60
         displayRecyclerView.layoutManager = GridLayoutManager(this, 3)
         myDisplayAdapter = MyDisplayAdapter(this, object : OnClickAdapter {

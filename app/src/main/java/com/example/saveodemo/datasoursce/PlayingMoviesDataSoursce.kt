@@ -14,11 +14,11 @@ class PlayingMoviesDataSoursce : PageKeyedDataSource<Int, Result>() {
     val key = "a481f1eb249ec2fb6a0466aa51354515"
 
     override fun loadInitial(
-        params: LoadInitialParams<Int>,
-        callback: LoadInitialCallback<Int, Result>
+            params: LoadInitialParams<Int>,
+            callback: LoadInitialCallback<Int, Result>
     ) {
         retrofitObj.getPlayingMovie(key, 1).enqueue(object :
-            retrofit2.Callback<BaseResponse> {
+                retrofit2.Callback<BaseResponse> {
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 if (response.isSuccessful) {
                     callback.onResult(response.body()!!.results!!, null, 1)
@@ -38,7 +38,7 @@ class PlayingMoviesDataSoursce : PageKeyedDataSource<Int, Result>() {
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Result>) {
         retrofitObj.getPlayingMovie(key, params.key).enqueue(object :
-            retrofit2.Callback<BaseResponse> {
+                retrofit2.Callback<BaseResponse> {
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 if (response.isSuccessful) {
                     callback.onResult(response.body()!!.results!!, params.key + 1)
