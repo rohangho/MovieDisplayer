@@ -2,6 +2,7 @@ package com.example.saveodemo.activity
 
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -16,6 +17,10 @@ class MainActivity : AppCompatActivity() {
     private var movieId: Int = 0
     private var detailViewModel: DetailViewModel? = null
     private lateinit var synipsis: TextView
+    private lateinit var movieTitle: TextView
+    private lateinit var movieDetail: TextView
+    private lateinit var movieRationg: RatingBar
+
     private lateinit var posterImage: ImageView
     private lateinit var circularProgressDrawable: CircularProgressDrawable
 
@@ -25,6 +30,9 @@ class MainActivity : AppCompatActivity() {
         movieId = intent.getIntExtra("movieId", 0)
         synipsis = findViewById(R.id.movieDetail)
         posterImage = findViewById(R.id.poster)
+        movieTitle = findViewById(R.id.titleName)
+        movieDetail = findViewById(R.id.detailname)
+        movieRationg = findViewById(R.id.rateMovie)
         circularProgressDrawable = CircularProgressDrawable(this)
         circularProgressDrawable.strokeWidth = 5f
         circularProgressDrawable.centerRadius = 30f
@@ -43,6 +51,10 @@ class MainActivity : AppCompatActivity() {
         Glide.with(this)
             .load("http://image.tmdb.org/t/p/original" + baseSearchResponse.posterPath)
             .placeholder(circularProgressDrawable).into(posterImage)
+        movieTitle.text = baseSearchResponse.title
+        movieDetail.text =
+            "R" + "|" + baseSearchResponse.releaseDate + "|" + baseSearchResponse.runtime + "minutes"
+        movieRationg.rating = (baseSearchResponse.voteAverage?.div(2))!!.toFloat()
 
     }
 

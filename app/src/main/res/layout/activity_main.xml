@@ -48,6 +48,36 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:id="@+id/titleName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/poster"
+                    app:layout_constraintTop_toTopOf="@id/poster" />
+
+                <TextView
+                    android:id="@+id/detailname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/poster"
+                    app:layout_constraintTop_toBottomOf="@id/titleName" />
+
+                <RatingBar
+                    android:id="@+id/rateMovie"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/RatingBar"
+                    app:layout_constraintBottom_toBottomOf="@+id/poster"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/poster"
+                    app:layout_constraintTop_toTopOf="@+id/detailname" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -63,19 +93,19 @@
             android:id="@+id/movieDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:lineSpacingExtra="8dp"
             android:padding="@dimen/activity_horizontal_margin"
             android:textSize="15sp"
-            android:layout_marginTop="20dp"
             tools:text="@string/demoText" />
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        app:icon="@drawable/ic_baseline_favorite_border_24"
         android:text="Book Now"
+        app:icon="@drawable/ic_baseline_favorite_border_24"
         app:layout_anchor="@id/appBar"
         app:layout_anchorGravity="bottom|end" />
 
