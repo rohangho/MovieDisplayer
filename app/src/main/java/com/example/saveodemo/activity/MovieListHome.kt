@@ -56,9 +56,13 @@ class MovieListHome : AppCompatActivity() {
         homeViewModel!!.getAllPlayingMovies().observe(this, {
             myDisplayAdapter.submitList(it)
         })
-        homeViewModel!!.getFeaturedList().observe(this, this::updateUi)
+        homeViewModel!!.getFeaturedMovie().observe(this, this::updateUi)
 
     }
+
+    /**
+     * This method update the UI of the coming soom movie
+     */
 
     private fun updateUi(detail: BaseResponse) {
         var imagList: ArrayList<String> = ArrayList()

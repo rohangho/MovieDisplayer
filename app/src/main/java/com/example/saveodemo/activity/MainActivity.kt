@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * THis method observer the change and get all the details from id
+     */
 
     fun updateDetail(baseSearchResponse: BaseSearchResponse) {
         synipsis.text = baseSearchResponse.overview

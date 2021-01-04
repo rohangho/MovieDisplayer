@@ -13,7 +13,7 @@ import com.example.saveodemo.repository.MainRepository
 class MainViewModel : ViewModel() {
 
     private lateinit var featuredList: MutableLiveData<BaseResponse>
-    private lateinit var allGifs: LiveData<PagedList<Result?>>
+    private lateinit var curentlyPlayingList: LiveData<PagedList<Result?>>
 
     private var myFeaturedInfo: MainRepository? = null
     fun init() {
@@ -24,7 +24,7 @@ class MainViewModel : ViewModel() {
             .setEnablePlaceholders(false).setPageSize(20)
             .build()
 
-        allGifs = LivePagedListBuilder(playingDataFactory, pagedListConfig)
+        curentlyPlayingList = LivePagedListBuilder(playingDataFactory, pagedListConfig)
             .build()
 
         myFeaturedInfo = MainRepository().getInstance()
@@ -33,10 +33,10 @@ class MainViewModel : ViewModel() {
     }
 
     fun getAllPlayingMovies(): LiveData<PagedList<Result?>> {
-        return allGifs
+        return curentlyPlayingList
     }
 
-    fun getFeaturedList(): MutableLiveData<BaseResponse> {
+    fun getFeaturedMovie(): MutableLiveData<BaseResponse> {
         return featuredList
     }
 
