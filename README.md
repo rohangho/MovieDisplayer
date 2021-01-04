@@ -25,6 +25,6 @@ Points:
 **************
 
 ## 3. Screen Recording
-![](https://firebasestorage.googleapis.com/v0/b/friendly-chat-c93b7.appspot.com/o/demo%20Readme%2FWhatsApp%20Video%202021-01-05%20at%201.13.44%20AM.gif?alt=media&token=1123142e-9adc-4eb2-8011-2e49d7e8b950)
+![](https://firebasestorage.googleapis.com/v0/b/friendly-chat-c93b7.appspot.com/o/demo%20Readme%2FWhatsApp%20Video%202021-01-05%20at%201.13.44%20AM.mp4?alt=media&token=d5e94daf-aa53-4459-a32b-86c117753dfe)
 
 
