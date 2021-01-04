@@ -13,7 +13,7 @@ import com.example.saveodemo.repository.MainRepository
 class MainViewModel : ViewModel() {
 
     private lateinit var featuredList: MutableLiveData<BaseResponse>
-    private lateinit var allGifs: LiveData<PagedList<Result>>
+    private lateinit var allGifs: LiveData<PagedList<Result?>>
 
     private var myFeaturedInfo: MainRepository? = null
     fun init() {
@@ -32,7 +32,7 @@ class MainViewModel : ViewModel() {
 
     }
 
-    fun getAllPlayingMovies(): LiveData<PagedList<Result>> {
+    fun getAllPlayingMovies(): LiveData<PagedList<Result?>> {
         return allGifs
     }
 

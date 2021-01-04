@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             .placeholder(circularProgressDrawable).into(posterImage)
         movieTitle.text = baseSearchResponse.title
         movieDetail.text =
-            "R" + "|" + baseSearchResponse.releaseDate + "|" + baseSearchResponse.runtime + "minutes"
+            "R" + "|" + baseSearchResponse.releaseDate + "|" + baseSearchResponse.runtime + " minutes"
         movieRationg.rating = (baseSearchResponse.voteAverage?.div(2))!!.toFloat()
 
     }
