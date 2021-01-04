@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.paging.PagedListAdapter;
@@ -15,6 +16,7 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 import com.bumptech.glide.Glide;
 import com.example.saveodemo.R;
 import com.example.saveodemo.model.Result;
+import com.example.saveodemo.utility.OnClickAdapter;
 
 public class MyDisplayAdapter extends PagedListAdapter<Result, MyDisplayAdapter.MyViewHolder> {
 
@@ -32,12 +34,12 @@ public class MyDisplayAdapter extends PagedListAdapter<Result, MyDisplayAdapter.
                 }
             };
     Context context;
-    //  OnClickAdapter onClickAdapter;
+    OnClickAdapter onClickAdapter;
 
-    public MyDisplayAdapter(Context context) {
+    public MyDisplayAdapter(Context context, OnClickAdapter onClickAdapter) {
         super(DIFF_CALLBACK);
         this.context = context;
-        // this.onClickAdapter = onClickAdapter;
+        this.onClickAdapter = onClickAdapter;
     }
 
     @NonNull
@@ -53,6 +55,7 @@ public class MyDisplayAdapter extends PagedListAdapter<Result, MyDisplayAdapter.
         circularProgressDrawable.setStrokeWidth(5f);
         circularProgressDrawable.setCenterRadius(30f);
         circularProgressDrawable.start();
+        holder.movieName.setText(getItem(position).getTitle());
         Glide.with(context).load("http://image.tmdb.org/t/p/original" + getItem(position).getPosterPath()).placeholder(circularProgressDrawable).into(holder.imageView);
     }
 
@@ -60,17 +63,19 @@ public class MyDisplayAdapter extends PagedListAdapter<Result, MyDisplayAdapter.
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
+        TextView movieName;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.thumbnail);
+            movieName = itemView.findViewById(R.id.tv_display_data);
             imageView.setOnClickListener(this);
         }
 
 
         @Override
         public void onClick(View v) {
-            //  onClickAdapter.clickedRecycler(getItem(getAdapterPosition()).getImages().getOriginal().getUrl());
+            onClickAdapter.clickedRecycler(getItem(getAdapterPosition()).getId());
         }
     }
 }

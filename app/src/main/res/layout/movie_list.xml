@@ -11,10 +11,13 @@
 
     <TextView
         android:id="@+id/tv_display_data"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:autoSizeMinTextSize="2dp"
+        android:maxLines="2"
         android:padding="16dp"
-        android:textColor="#ffffff" />
+        android:text="#000000"
+        android:textAlignment="center" />
 
 
 </LinearLayout>

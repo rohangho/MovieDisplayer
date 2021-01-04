@@ -1,5 +1,6 @@
 package com.example.saveodemo.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -10,6 +11,7 @@ import com.example.saveodemo.R
 import com.example.saveodemo.adapter.MyDisplayAdapter
 import com.example.saveodemo.adapter.SlidingImage_Adapter
 import com.example.saveodemo.model.BaseResponse
+import com.example.saveodemo.utility.OnClickAdapter
 import com.example.saveodemo.viewModel.MainViewModel
 
 
@@ -27,7 +29,17 @@ class MovieListHome : AppCompatActivity() {
         displayViewPager = findViewById(R.id.hori_slider)
         displayRecyclerView.layoutManager = GridLayoutManager(this, 3)
         displayRecyclerView.isNestedScrollingEnabled = false
-        myDisplayAdapter = MyDisplayAdapter(this)
+        myDisplayAdapter = MyDisplayAdapter(this, object : OnClickAdapter {
+            override fun clickedRecycler(id: Int) {
+                startActivity(
+                    Intent(
+                        applicationContext,
+                        MainActivity::class.java
+                    ).putExtra("movieId", id)
+                )
+            }
+
+        })
         displayRecyclerView.adapter = myDisplayAdapter
         homeViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         homeViewModel!!.init()
