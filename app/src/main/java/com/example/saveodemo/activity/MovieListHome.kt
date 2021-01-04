@@ -28,7 +28,6 @@ class MovieListHome : AppCompatActivity() {
         displayRecyclerView = findViewById(R.id.playingMovieList)
         displayViewPager = findViewById(R.id.hori_slider)
         displayRecyclerView.layoutManager = GridLayoutManager(this, 3)
-        displayRecyclerView.isNestedScrollingEnabled = false
         myDisplayAdapter = MyDisplayAdapter(this, object : OnClickAdapter {
             override fun clickedRecycler(id: Int) {
                 startActivity(
