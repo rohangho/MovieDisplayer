@@ -76,7 +76,7 @@ public class MyDisplayAdapter extends PagedListAdapter<Result, MyDisplayAdapter.
 
         @Override
         public void onClick(View v) {
-            onClickAdapter.clickedRecycler(getItem(getAdapterPosition()).getId());
+            onClickAdapter.clickedRecycler(getItem(getAdapterPosition()).getId(), v);
         }
     }
 }

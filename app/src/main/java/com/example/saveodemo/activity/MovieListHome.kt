@@ -2,7 +2,9 @@ package com.example.saveodemo.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,12 +35,17 @@ class MovieListHome : AppCompatActivity() {
         displayViewPager.pageMargin = 60
         displayRecyclerView.layoutManager = GridLayoutManager(this, 3)
         myDisplayAdapter = MyDisplayAdapter(this, object : OnClickAdapter {
-            override fun clickedRecycler(id: Int) {
+            override fun clickedRecycler(id: Int, v: View) {
+                val activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this@MovieListHome,
+                    v,
+                    "imageMain"
+                )
                 startActivity(
                     Intent(
                         applicationContext,
                         MainActivity::class.java
-                    ).putExtra("movieId", id)
+                    ).putExtra("movieId", id), activityOptionsCompat.toBundle()
                 )
             }
 
